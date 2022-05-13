@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.OrcamentoController">
+   <children>
+      <ImageView fitHeight="539.0" fitWidth="895.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/fundo%20orçamento.png" />
+         </image></ImageView>
+      <TableView layoutX="28.0" layoutY="112.0" prefHeight="270.0" prefWidth="847.0" stylesheets="@../styles/TableViewEstilo.css">
+        <columns>
+          <TableColumn fx:id="tcCodigo" prefWidth="75.0" text="Codigo" />
+          <TableColumn fx:id="tcMarca" prefWidth="136.79998779296875" text="Veiculo" />
+            <TableColumn fx:id="tcModelo" prefWidth="148.0" text="Modelo" />
+            <TableColumn fx:id="tcCliente" prefWidth="261.60003662109375" text="Cliente" />
+            <TableColumn fx:id="tcValorOrc" minWidth="0.0" prefWidth="88.00006103515625" text="Valor" />
+            <TableColumn fx:id="tcData" prefWidth="143.199951171875" text="Data Orçamento" />
+        </columns>
+      </TableView>
+      <Label layoutX="155.0" layoutY="30.0" text="Orçamento" textFill="#ffcc00">
+         <font>
+            <Font name="Garamond" size="48.0" />
+         </font>
+      </Label>
+      <Button fx:id="btVoltar" layoutX="52.0" layoutY="399.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/BotaoCadastroEstoqueJavaFX.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Voltar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btCadastro" layoutX="760.0" layoutY="399.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/BotaoCadastroEstoqueJavaFX.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/cadastroItem.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

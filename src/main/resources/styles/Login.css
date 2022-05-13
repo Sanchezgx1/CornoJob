@@ -1,0 +1,4 @@
+.root {
+    -fx-background-image:url("../image/fundo.png");
+    -fx-background-size: 100% 100%;
+}

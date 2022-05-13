@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.TelaOpcaoController">
+    <stylesheets>
+        <URL value="@styles/telaopcao.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="705.0" fitWidth="1104.0" layoutX="-100.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-100.0" AnchorPane.rightAnchor="-100.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../image/fundoOpcao.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btEstoque" alignment="CENTER" contentDisplay="CENTER" layoutX="480.0" layoutY="58.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="250.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="225.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/parcela.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btPedido" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="356.0" mnemonicParsing="false" prefHeight="250.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="225.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/lista-de-controle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btFinanceiro" alignment="CENTER" contentDisplay="CENTER" layoutX="516.0" layoutY="355.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <effect>
+            <ColorAdjust />
+         </effect>
+         <graphic>
+            <ImageView fitHeight="275.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/cifrao.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btOrcamento" alignment="CENTER" contentDisplay="CENTER" layoutX="56.0" layoutY="41.0" mnemonicParsing="false" prefHeight="269.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="205.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Downloads/orcamento.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="164.0" layoutY="276.0" text="Orçamento" textAlignment="CENTER" textFill="#0095ff">
+         <font>
+            <Font name="Garamond" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="595.0" layoutY="275.0" text="Estoque" textFill="#f8c460">
+         <font>
+            <Font name="Garamond" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="156.0" layoutY="581.0" text="Pedido" textFill="#ff0059">
+         <font>
+            <Font name="Garamond" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="529.0" layoutY="576.0" text="Financeiro" textFill="#4caf50">
+         <font>
+            <Font name="Garamond" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,8 @@
+.icon-button {
+    -fx-background-color: rgba(0, 0, 0, 0.50);
+    -fx-background-radius: 15px;
+}
+
+.icon-button:hover{
+	-fx-cursor: hand;	
+}
