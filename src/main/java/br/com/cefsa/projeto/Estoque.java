@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-
+//funcionou
 public class Estoque extends Application {
 
     private static Stage stage;
