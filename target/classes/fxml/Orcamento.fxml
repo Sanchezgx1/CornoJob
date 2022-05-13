@@ -18,7 +18,7 @@
       <TableView layoutX="28.0" layoutY="112.0" prefHeight="270.0" prefWidth="847.0" stylesheets="@../styles/TableViewEstilo.css">
         <columns>
           <TableColumn fx:id="tcCodigo" prefWidth="75.0" text="Codigo" />
-          <TableColumn fx:id="tcMarca" prefWidth="136.79998779296875" text="Veiculo" />
+          <TableColumn fx:id="tcMarca" prefWidth="136.79998779296875" text="Marca" />
             <TableColumn fx:id="tcModelo" prefWidth="148.0" text="Modelo" />
             <TableColumn fx:id="tcCliente" prefWidth="261.60003662109375" text="Cliente" />
             <TableColumn fx:id="tcValorOrc" minWidth="0.0" prefWidth="88.00006103515625" text="Valor" />
