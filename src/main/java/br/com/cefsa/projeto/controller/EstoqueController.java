@@ -35,19 +35,19 @@ public class EstoqueController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private TableView<Produto> tbvestoque;
+    private TableView<Produto> tabela;
 
     @FXML
-    private TableColumn<Produto, String> tcPeca;
+    private TableColumn<Produto, String> clmPeca;
 
     @FXML
-    private TableColumn<Produto, Float> tcValorU;
+    private TableColumn<Produto, Float> clmValorU;
 
     @FXML
-    private TableColumn<Produto, Long> tcQuantidade;
+    private TableColumn<Produto, Long> clmQuantidade;
 
     @FXML
-    private TableColumn<Produto, Long> tcTotal;
+    private TableColumn<Produto, Long> clmTotal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -79,5 +79,9 @@ public class EstoqueController implements Initializable {
             }
         });
 
+    }
+    
+    public void initTable(){
+        clm
     }
 }
