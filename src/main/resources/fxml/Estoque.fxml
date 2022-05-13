@@ -16,12 +16,12 @@
             <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/fundoEstoque2.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tbvestoque" layoutX="71.0" layoutY="100.0" prefHeight="319.0" prefWidth="766.0" stylesheets="@../styles/TableViewEstilo.css" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.0">
+      <TableView fx:id="tabela" layoutX="71.0" layoutY="100.0" prefHeight="319.0" prefWidth="766.0" stylesheets="@../styles/TableViewEstilo.css" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.0">
         <columns>
-          <TableColumn fx:id="tcPeca" prefWidth="420.0" text="Peça" />
-            <TableColumn fx:id="tcValorU" minWidth="0.0" prefWidth="160.0" text="Valor Unitario" />
-          <TableColumn fx:id="tcQuantidade" text="Quantidade" />
-            <TableColumn fx:id="tcTotal" prefWidth="160.0" text="Total" />
+          <TableColumn fx:id="clmPeca" prefWidth="420.0" text="Peça" />
+            <TableColumn fx:id="clmValorU" minWidth="0.0" prefWidth="160.0" text="Valor Unitario" />
+          <TableColumn fx:id="clmQuantidade" text="Quantidade" />
+            <TableColumn fx:id="clmTotal" prefWidth="160.0" text="Total" />
         </columns>
       </TableView>
       <Button fx:id="btVoltar" layoutX="104.0" layoutY="457.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css">
