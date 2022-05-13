@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -38,7 +39,7 @@ public class EstoqueController implements Initializable {
     private TableView<Produto> tabela;
 
     @FXML
-    private TableColumn<Produto, String> clmPeca;
+    private TableColumn<Produto, String> clmDescricao;
 
     @FXML
     private TableColumn<Produto, Float> clmValorU;
@@ -82,6 +83,6 @@ public class EstoqueController implements Initializable {
     }
     
     public void initTable(){
-        clm
+        clmPeca.setCellValueFactory(new PropertyValueFactory(""));
     }
 }
