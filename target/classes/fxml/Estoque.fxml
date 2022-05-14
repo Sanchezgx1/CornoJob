@@ -4,27 +4,28 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="590.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.EstoqueController">
+<AnchorPane id="AnchorPane" prefHeight="642.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.EstoqueController">
    <children>
-      <ImageView fitHeight="618.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="642.0" fitWidth="1043.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/fundoEstoque2.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tabela" layoutX="71.0" layoutY="100.0" prefHeight="319.0" prefWidth="766.0" stylesheets="@../styles/TableViewEstilo.css" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.0">
+      <TableView fx:id="tabela" layoutX="71.0" layoutY="100.0" prefHeight="319.0" prefWidth="872.0" stylesheets="@../styles/TableViewEstilo.css" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="82.0">
         <columns>
-          <TableColumn fx:id="clmDescricao" prefWidth="420.0" text="Descrição" />
-            <TableColumn fx:id="clmValorUni" minWidth="0.0" prefWidth="160.0" text="Valor Unitario" />
-          <TableColumn fx:id="clmQuantidade" text="Quantidade" />
-            <TableColumn fx:id="clmTotal" prefWidth="160.0" text="Total" />
+          <TableColumn fx:id="clmDescricao" prefWidth="587.0" text="Descrição" />
+            <TableColumn fx:id="clmValorUni" minWidth="0.0" prefWidth="98.0" text="Valor Unitario" />
+          <TableColumn fx:id="clmQuantidade" prefWidth="103.0" text="Quantidade" />
+            <TableColumn fx:id="clmTotal" prefWidth="83.0" text="Total" />
         </columns>
       </TableView>
-      <Button fx:id="btVoltar" layoutX="104.0" layoutY="457.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css">
+      <Button fx:id="btVoltar" layoutX="71.0" layoutY="506.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="53.0">
          <graphic>
             <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,7 +33,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btCadastro" layoutX="775.0" layoutY="457.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="100.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css">
+      <Button fx:id="btCadastro" layoutX="859.0" layoutY="490.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="100.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="53.0">
          <graphic>
             <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,5 +46,8 @@
             <Font name="Garamond" size="36.0" />
          </font>
       </Label>
+      <TextField fx:id="txDescricaoPeca" layoutX="71.0" layoutY="439.0" prefHeight="25.0" prefWidth="587.0" promptText="Drecrição da Peça" />
+      <TextField fx:id="txValor" layoutX="658.0" layoutY="439.0" prefHeight="25.0" prefWidth="98.0" promptText="Valor" />
+      <TextField fx:id="txQtd" layoutX="756.0" layoutY="439.0" prefHeight="25.0" prefWidth="103.0" promptText="Quantidade" />
    </children>
 </AnchorPane>

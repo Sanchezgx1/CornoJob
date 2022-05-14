@@ -53,9 +53,9 @@ public class Produto {
         this.total = total;
     }
     
-    public Long valorTotal(){
-        this.valorUni = valorUni;
-        this.quantidade = quantidade;
+    public Long valorTotal(long valor, long qtd){
+        valor = valorUni;
+        qtd = quantidade;
         total = valorUni*quantidade;
         return total;
     }

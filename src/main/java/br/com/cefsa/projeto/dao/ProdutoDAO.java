@@ -37,7 +37,7 @@ public class ProdutoDAO {
             stmt.setString(1, p.getDescricao());
             stmt.setLong(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
-            stmt.setLong(4, p.valorTotal());
+            stmt.setLong(4, p.valorTotal(p.getValorUni(),p.getQuantidade()));
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
@@ -57,7 +57,7 @@ public class ProdutoDAO {
         List<Produto> produtos = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM PRODUTO");
+            stmt = con.prepareStatement("SELECT * FROM PRODUTO ORDER BY 2 ASC");
             rs = stmt.executeQuery();
 
             while (rs.next()) {

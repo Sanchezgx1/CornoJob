@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -52,6 +53,15 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TableColumn<Produto, Long> clmTotal;
+    
+        @FXML
+    private TextField txDescricaoPeca;
+
+    @FXML
+    private TextField txQtd;
+
+    @FXML
+    private TextField txValor;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -70,7 +80,7 @@ public class EstoqueController implements Initializable {
         });
 
         btCadastro.setOnMouseClicked((MouseEvent e) -> {
-            CadastroEstoque t = new CadastroEstoque();
+            /*CadastroEstoque t = new CadastroEstoque();
             try {
                 t.start(new Stage());
                 Estoque.getStage().close();
@@ -80,7 +90,21 @@ public class EstoqueController implements Initializable {
                 alert.setTitle("Erro");
                 alert.setHeaderText("Não foi possivel voltar a Cadastro de Itens");
                 alert.show();
-            }
+            }*/
+            
+            Produto p = new Produto();
+            ProdutoDAO dao = new ProdutoDAO();
+
+            p.setDescricao(txDescricaoPeca.getText());
+            p.setValorUni(Long.parseLong(txValor.getText()));
+            p.setQuantidade(Long.parseLong(txQtd.getText()));
+            dao.create(p);
+            
+            txDescricaoPeca.setText(null);
+            txValor.setText(null);
+            txQtd.setText(null);
+            initTable();
+            
         });
 
         initTable();
