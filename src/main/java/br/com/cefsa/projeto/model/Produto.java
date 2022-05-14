@@ -9,8 +9,9 @@ public class Produto {
     
     private Long id;
     private String descricao;
-    private Float valorUn;
+    private Long valorUni;
     private Long quantidade;
+    private Long total;
 
     public Long getId() {
         return id;
@@ -28,12 +29,12 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Float getValorUn() {
-        return valorUn;
+    public Long getValorUni() {
+        return valorUni;
     }
 
-    public void setValorUn(Float valorUn) {
-        this.valorUn = valorUn;
+    public void setValorUni(Long valorUni) {
+        this.valorUni = valorUni;
     }
 
     public Long getQuantidade() {
@@ -42,6 +43,21 @@ public class Produto {
 
     public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+    
+    public Long valorTotal(){
+        this.valorUni = valorUni;
+        this.quantidade = quantidade;
+        total = valorUni*quantidade;
+        return total;
     }
     
 }

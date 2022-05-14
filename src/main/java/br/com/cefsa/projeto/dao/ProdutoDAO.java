@@ -35,9 +35,9 @@ public class ProdutoDAO {
         try {
             stmt = con.prepareStatement("INSERT INTO produto(descricao,valorUni,quantidade,total) values(?,?,?,?)");
             stmt.setString(1, p.getDescricao());
-            stmt.setFloat(2, p.getValorUn());
+            stmt.setLong(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
-
+            stmt.setLong(4, p.valorTotal());
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
@@ -49,7 +49,7 @@ public class ProdutoDAO {
 
     }
 
-    public List<Produto> read() {
+    public List<Produto> getList() {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -61,13 +61,14 @@ public class ProdutoDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-
+                
                 Produto p = new Produto();
-
+                
                 p.setId(rs.getLong("id"));
                 p.setDescricao(rs.getString("descricao"));
-                p.setValorUn(rs.getFloat("valorUni"));
+                p.setValorUni(rs.getLong("valorUni"));
                 p.setQuantidade(rs.getLong("quantidade"));
+                p.setTotal(rs.getLong("total"));
                 produtos.add(p);
             }
             

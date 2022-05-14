@@ -7,11 +7,14 @@ package br.com.cefsa.projeto.controller;
 import br.com.cefsa.projeto.CadastroEstoque;
 import br.com.cefsa.projeto.Estoque;
 import br.com.cefsa.projeto.TelaOpcao;
+import br.com.cefsa.projeto.dao.ProdutoDAO;
 import br.com.cefsa.projeto.model.Produto;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
@@ -42,7 +45,7 @@ public class EstoqueController implements Initializable {
     private TableColumn<Produto, String> clmDescricao;
 
     @FXML
-    private TableColumn<Produto, Float> clmValorU;
+    private TableColumn<Produto, Float> clmValorUni;
 
     @FXML
     private TableColumn<Produto, Long> clmQuantidade;
@@ -80,9 +83,20 @@ public class EstoqueController implements Initializable {
             }
         });
 
+        initTable();
+        
     }
     
     public void initTable(){
-        clmPeca.setCellValueFactory(new PropertyValueFactory(""));
+        clmDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
+        clmValorUni.setCellValueFactory(new PropertyValueFactory("valorUni"));
+        clmQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
+        clmTotal.setCellValueFactory( new PropertyValueFactory("total"));
+        tabela.setItems(atualizaTabela());
+    }
+    
+    public ObservableList<Produto> atualizaTabela(){
+        ProdutoDAO dao = new ProdutoDAO();
+        return FXCollections.observableArrayList(dao.getList());
     }
 }
