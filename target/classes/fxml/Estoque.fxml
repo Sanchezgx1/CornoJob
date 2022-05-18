@@ -41,6 +41,24 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="btAtualiza" alignment="CENTER" contentDisplay="CENTER" layoutX="740.0" layoutY="490.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="103.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css">
+         <graphic>
+            <ImageView fitHeight="83.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/atualizar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btDeleta" alignment="CENTER" contentDisplay="CENTER" layoutX="624.0" layoutY="489.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="103.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css">
+         <graphic>
+            <ImageView fitHeight="83.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/botao-de-deletar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="27.0" prefHeight="45.0" prefWidth="150.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoLabelJavaFX.css" text="Estoque" textFill="WHITE">
          <font>
             <Font name="Garamond" size="36.0" />

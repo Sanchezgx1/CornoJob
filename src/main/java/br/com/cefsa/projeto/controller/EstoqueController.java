@@ -4,7 +4,6 @@
  */
 package br.com.cefsa.projeto.controller;
 
-import br.com.cefsa.projeto.CadastroEstoque;
 import br.com.cefsa.projeto.Estoque;
 import br.com.cefsa.projeto.TelaOpcao;
 import br.com.cefsa.projeto.dao.ProdutoDAO;
@@ -33,8 +32,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class EstoqueController implements Initializable {
 
+
+    @FXML
+    private Button btAtualiza;
+
     @FXML
     private Button btCadastro;
+
+    @FXML
+    private Button btDeleta;
 
     @FXML
     private Button btVoltar;
@@ -53,8 +59,8 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TableColumn<Produto, Long> clmTotal;
-    
-        @FXML
+
+    @FXML
     private TextField txDescricaoPeca;
 
     @FXML
@@ -80,18 +86,7 @@ public class EstoqueController implements Initializable {
         });
 
         btCadastro.setOnMouseClicked((MouseEvent e) -> {
-            /*CadastroEstoque t = new CadastroEstoque();
-            try {
-                t.start(new Stage());
-                Estoque.getStage().close();
-            } catch (Exception ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro");
-                alert.setHeaderText("Não foi possivel voltar a Cadastro de Itens");
-                alert.show();
-            }*/
-            
+
             Produto p = new Produto();
             ProdutoDAO dao = new ProdutoDAO();
 
@@ -99,27 +94,27 @@ public class EstoqueController implements Initializable {
             p.setValorUni(Long.parseLong(txValor.getText()));
             p.setQuantidade(Long.parseLong(txQtd.getText()));
             dao.create(p);
-            
+
             txDescricaoPeca.setText(null);
             txValor.setText(null);
             txQtd.setText(null);
             initTable();
-            
+
         });
 
         initTable();
-        
+
     }
-    
-    public void initTable(){
+
+    public void initTable() {
         clmDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
         clmValorUni.setCellValueFactory(new PropertyValueFactory("valorUni"));
         clmQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        clmTotal.setCellValueFactory( new PropertyValueFactory("total"));
+        clmTotal.setCellValueFactory(new PropertyValueFactory("total"));
         tabela.setItems(atualizaTabela());
     }
-    
-    public ObservableList<Produto> atualizaTabela(){
+
+    public ObservableList<Produto> atualizaTabela() {
         ProdutoDAO dao = new ProdutoDAO();
         return FXCollections.observableArrayList(dao.getList());
     }
