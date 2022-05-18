@@ -19,6 +19,18 @@
             <Image url="@../image/fundoOpcao.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="btFuncionario" alignment="CENTER" contentDisplay="CENTER" layoutX="493.0" layoutY="350.0" mnemonicParsing="false" prefHeight="270.0" prefWidth="310.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="69.60000000000002" AnchorPane.leftAnchor="493.0">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="183.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Area%20de%20Trabalho/Instalação%20para%20javaFx/Image%20JavaFX/funcionarios.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Button fx:id="btEstoque" alignment="CENTER" contentDisplay="CENTER" layoutX="480.0" layoutY="58.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="250.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font size="64.0" />
@@ -31,19 +43,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btPedido" alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="356.0" mnemonicParsing="false" prefHeight="250.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="100.0">
-         <font>
-            <Font size="64.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="225.0" fitWidth="275.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../Downloads/lista-de-controle.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="btFinanceiro" alignment="CENTER" contentDisplay="CENTER" layoutX="516.0" layoutY="355.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="100.0">
+      <Button fx:id="btFinanceiro" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="351.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="70.20000000000005" AnchorPane.rightAnchor="497.6">
          <font>
             <Font size="64.0" />
          </font>
@@ -80,12 +80,12 @@
             <Font name="Garamond" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="156.0" layoutY="581.0" text="Pedido" textFill="#ff0059">
+      <Label layoutX="568.0" layoutY="576.0" text="Funcionario" textFill="#d2edff">
          <font>
             <Font name="Garamond" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="529.0" layoutY="576.0" text="Financeiro" textFill="#4caf50">
+      <Label layoutX="176.0" layoutY="576.0" text="Financeiro" textFill="#4caf50">
          <font>
             <Font name="Garamond" size="36.0" />
          </font>

@@ -4,7 +4,6 @@
  */
 package br.com.cefsa.projeto.controller;
 
-import br.com.cefsa.projeto.CadastroEstoque;
 import br.com.cefsa.projeto.Estoque;
 import br.com.cefsa.projeto.Orcamento;
 import br.com.cefsa.projeto.TelaOpcao;
@@ -33,7 +32,7 @@ public class TelaOpcaoController implements Initializable {
     private Button btEstoque;
 
     @FXML
-    private Button btPedido;
+    private Button btFuncionario;
 
     @FXML
     private Button btFinanceiro;
@@ -68,8 +67,8 @@ public class TelaOpcaoController implements Initializable {
             }
         });
 
-        btPedido.setOnMouseClicked((MouseEvent e) -> {
-            System.out.println("Pedido");
+        btFuncionario.setOnMouseClicked((MouseEvent e) -> {
+            System.out.println("Funcionario");
         });
 
         btFinanceiro.setOnMouseClicked((MouseEvent e) -> {
