@@ -5,7 +5,6 @@
 package br.com.cefsa.projeto.dao;
 
 import br.com.cefsa.projeto.connection.ConnectionFactory;
-import br.com.cefsa.projeto.model.Pessoa;
 import br.com.cefsa.projeto.model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
