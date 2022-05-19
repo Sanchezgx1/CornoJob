@@ -114,8 +114,6 @@ public class ProdutoDAO {
                 p.setTotal(rs.getLong("total"));
                 produtos.add(p);
             }
-            stmt.close();
-            con.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
