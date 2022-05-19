@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -31,7 +33,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author sanch
  */
 public class EstoqueController implements Initializable {
-
 
     @FXML
     private Button btAtualiza;
@@ -103,6 +104,13 @@ public class EstoqueController implements Initializable {
         });
 
         initTable();
+
+        tabela.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object t, Object t1) {
+                
+            }
+        });
 
     }
 

@@ -36,12 +36,56 @@ public class ProdutoDAO {
             stmt.setString(1, p.getDescricao());
             stmt.setLong(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
-            stmt.setLong(4, p.valorTotal(p.getValorUni(),p.getQuantidade()));
+            stmt.setLong(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
             stmt.executeUpdate();
+            stmt.close();
+            con.close();
 
             JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Cadastrar" + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+    }
+
+    public void update(Produto p) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE produto SET descricao = ?, valorUni = ?, quantidade = ?, total = ? WHERE id = ?");
+            stmt.setString(1, p.getDescricao());
+            stmt.setLong(2, p.getValorUni());
+            stmt.setLong(3, p.getQuantidade());
+            stmt.setLong(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
+            stmt.setLong(5, p.getId());
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Alterado com Sucesso");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Alterar" + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
+    }
+
+    public void delete(Produto p) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM produto WHERE id = ?");
+            stmt.setLong(1, p.getId());
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Deletado com Sucesso");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Deletar" + ex);
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -60,9 +104,9 @@ public class ProdutoDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                
+
                 Produto p = new Produto();
-                
+
                 p.setId(rs.getLong("id"));
                 p.setDescricao(rs.getString("descricao"));
                 p.setValorUni(rs.getLong("valorUni"));
@@ -70,13 +114,15 @@ public class ProdutoDAO {
                 p.setTotal(rs.getLong("total"));
                 produtos.add(p);
             }
-            
+            stmt.close();
+            con.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-                ConnectionFactory.closeConnection(con, stmt, rs);
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        
+
         return produtos;
     }
 
