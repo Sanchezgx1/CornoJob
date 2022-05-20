@@ -67,5 +67,6 @@
       <TextField fx:id="txDescricaoPeca" layoutX="71.0" layoutY="439.0" prefHeight="25.0" prefWidth="587.0" promptText="Drecrição da Peça" />
       <TextField fx:id="txValor" layoutX="658.0" layoutY="439.0" prefHeight="25.0" prefWidth="98.0" promptText="Valor" />
       <TextField fx:id="txQtd" layoutX="756.0" layoutY="439.0" prefHeight="25.0" prefWidth="103.0" promptText="Quantidade" />
+      <Label fx:id="lbID" layoutX="26.0" layoutY="443.0" prefHeight="17.0" prefWidth="27.0" />
    </children>
 </AnchorPane>

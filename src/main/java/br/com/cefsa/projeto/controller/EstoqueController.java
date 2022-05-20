@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -70,6 +71,9 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TextField txValor;
+    
+    @FXML
+    private Label lbID;
     
     private Produto seleciona;
 
@@ -120,6 +124,7 @@ public class EstoqueController implements Initializable {
             @Override
             public void changed(ObservableValue ov, Object oldValue, Object newValue) {
                 seleciona = (Produto) newValue;
+                mostraDetalhes();
             }
         });
 
@@ -149,6 +154,20 @@ public class EstoqueController implements Initializable {
             a.show();
         }
        tabela.setItems(atualizaTabela());
+    }
+    
+    public void mostraDetalhes(){
+        if(seleciona != null){
+            lbID.setText(seleciona.getId().toString());
+            txDescricaoPeca.setText(seleciona.getDescricao());
+            txValor.setText(seleciona.getValorUni().toString());
+            txQtd.setText(seleciona.getQuantidade().toString());
+        }else{
+            lbID.setText("");
+            txDescricaoPeca.setText("");
+            txValor.setText("");
+            txQtd.setText("");
+        }
     }
     
 }
