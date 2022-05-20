@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -69,6 +70,8 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TextField txValor;
+    
+    private Produto seleciona;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,13 +105,21 @@ public class EstoqueController implements Initializable {
             initTable();
 
         });
+        
+        btDeleta.setOnMouseClicked((MouseEvent e) -> {
+            deleta();
+        });
+        
+        btAtualiza.setOnMouseClicked((MouseEvent e) -> {
+            tabela.setItems(atualizaTabela());
+        });
 
         initTable();
 
         tabela.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
-            public void changed(ObservableValue ov, Object t, Object t1) {
-                
+            public void changed(ObservableValue ov, Object oldValue, Object newValue) {
+                seleciona = (Produto) newValue;
             }
         });
 
@@ -126,4 +137,18 @@ public class EstoqueController implements Initializable {
         ProdutoDAO dao = new ProdutoDAO();
         return FXCollections.observableArrayList(dao.getList());
     }
+    
+    public void deleta(){
+        if(seleciona != null){
+        ProdutoDAO dao = new ProdutoDAO();
+        dao.delete(seleciona);
+        }else
+        {
+            Alert a = new Alert(AlertType.WARNING);
+            a.setHeaderText("Selecione um Usuario");
+            a.show();
+        }
+       tabela.setItems(atualizaTabela());
+    }
+    
 }

@@ -4,6 +4,9 @@
  */
 package br.com.cefsa.projeto.model;
 
+import br.com.cefsa.projeto.dao.ProdutoDAO;
+import java.util.List;
+
 
 public class Produto {
     
@@ -12,6 +15,22 @@ public class Produto {
     private Long valorUni;
     private Long quantidade;
     private Long total;
+
+    public Produto() {
+    }
+
+    public Produto(Long id, String descricao, Long valorUni, Long quantidade) {
+        this.id = id;
+        this.descricao = descricao;
+        this.valorUni = valorUni;
+        this.quantidade = quantidade;
+    }
+
+    public Produto(String descricao, Long valorUni, Long quantidade) {
+        this.descricao = descricao;
+        this.valorUni = valorUni;
+        this.quantidade = quantidade;
+    }
 
     public Long getId() {
         return id;
@@ -60,4 +79,8 @@ public class Produto {
         return total;
     }
     
+    public void listaProduto(){
+        List<Produto> produto = new ProdutoDAO().getList();
+        
+    }
 }
