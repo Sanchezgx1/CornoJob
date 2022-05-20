@@ -12,21 +12,21 @@ public class Produto {
     
     private Long id;
     private String descricao;
-    private Long valorUni;
+    private Double valorUni;
     private Long quantidade;
-    private Long total;
+    private Double total;
 
     public Produto() {
     }
 
-    public Produto(Long id, String descricao, Long valorUni, Long quantidade) {
+    public Produto(Long id, String descricao, Double valorUni, Long quantidade) {
         this.id = id;
         this.descricao = descricao;
         this.valorUni = valorUni;
         this.quantidade = quantidade;
     }
 
-    public Produto(String descricao, Long valorUni, Long quantidade) {
+    public Produto(String descricao, Double valorUni, Long quantidade) {
         this.descricao = descricao;
         this.valorUni = valorUni;
         this.quantidade = quantidade;
@@ -48,11 +48,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Long getValorUni() {
+    public Double getValorUni() {
         return valorUni;
     }
 
-    public void setValorUni(Long valorUni) {
+    public void setValorUni(Double valorUni) {
         this.valorUni = valorUni;
     }
 
@@ -64,18 +64,18 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public Long getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
     
-    public Long valorTotal(long valor, long qtd){
+    public Double valorTotal(double valor, long qtd){
         valor = valorUni;
         qtd = quantidade;
-        total = valorUni*quantidade;
+        double total = valorUni*Double.parseDouble(quantidade.toString());
         return total;
     }
     

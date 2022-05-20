@@ -34,9 +34,9 @@ public class ProdutoDAO {
         try {
             stmt = con.prepareStatement("INSERT INTO produto(descricao,valorUni,quantidade,total) values(?,?,?,?)");
             stmt.setString(1, p.getDescricao());
-            stmt.setLong(2, p.getValorUni());
+            stmt.setDouble(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
-            stmt.setLong(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
+            stmt.setDouble(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
             stmt.executeUpdate();
             stmt.close();
             con.close();
@@ -56,9 +56,9 @@ public class ProdutoDAO {
         try {
             stmt = con.prepareStatement("UPDATE produto SET descricao = ?, valorUni = ?, quantidade = ?, total = ? WHERE id = ?");
             stmt.setString(1, p.getDescricao());
-            stmt.setLong(2, p.getValorUni());
+            stmt.setDouble(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
-            stmt.setLong(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
+            stmt.setDouble(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
             stmt.setLong(5, p.getId());
             stmt.executeUpdate();
             stmt.close();
@@ -109,9 +109,9 @@ public class ProdutoDAO {
 
                 p.setId(rs.getLong("id"));
                 p.setDescricao(rs.getString("descricao"));
-                p.setValorUni(rs.getLong("valorUni"));
+                p.setValorUni(rs.getDouble("valorUni"));
                 p.setQuantidade(rs.getLong("quantidade"));
-                p.setTotal(rs.getLong("total"));
+                p.setTotal(rs.getDouble("total"));
                 produtos.add(p);
             }
 

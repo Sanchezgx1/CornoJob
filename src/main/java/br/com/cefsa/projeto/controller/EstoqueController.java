@@ -71,10 +71,13 @@ public class EstoqueController implements Initializable {
 
     @FXML
     private TextField txValor;
-    
+
     @FXML
     private Label lbID;
-    
+
+    @FXML
+    private Button btReset;
+
     private Produto seleciona;
 
     @Override
@@ -99,7 +102,7 @@ public class EstoqueController implements Initializable {
             ProdutoDAO dao = new ProdutoDAO();
 
             p.setDescricao(txDescricaoPeca.getText());
-            p.setValorUni(Long.parseLong(txValor.getText()));
+            p.setValorUni(Double.parseDouble(txValor.getText()));
             p.setQuantidade(Long.parseLong(txQtd.getText()));
             dao.create(p);
 
@@ -109,12 +112,16 @@ public class EstoqueController implements Initializable {
             initTable();
 
         });
-        
+
         btDeleta.setOnMouseClicked((MouseEvent e) -> {
             deleta();
         });
-        
+
         btAtualiza.setOnMouseClicked((MouseEvent e) -> {
+            tabela.setItems(atualizaTabela());
+        });
+        
+        btReset.setOnMouseClicked((MouseEvent e) -> {
             tabela.setItems(atualizaTabela());
         });
 
@@ -142,32 +149,31 @@ public class EstoqueController implements Initializable {
         ProdutoDAO dao = new ProdutoDAO();
         return FXCollections.observableArrayList(dao.getList());
     }
-    
-    public void deleta(){
-        if(seleciona != null){
-        ProdutoDAO dao = new ProdutoDAO();
-        dao.delete(seleciona);
-        }else
-        {
+
+    public void deleta() {
+        if (seleciona != null) {
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.delete(seleciona);
+        } else {
             Alert a = new Alert(AlertType.WARNING);
             a.setHeaderText("Selecione um Usuario");
             a.show();
         }
-       tabela.setItems(atualizaTabela());
+        tabela.setItems(atualizaTabela());
     }
-    
-    public void mostraDetalhes(){
-        if(seleciona != null){
+
+    public void mostraDetalhes() {
+        if (seleciona != null) {
             lbID.setText(seleciona.getId().toString());
             txDescricaoPeca.setText(seleciona.getDescricao());
             txValor.setText(seleciona.getValorUni().toString());
             txQtd.setText(seleciona.getQuantidade().toString());
-        }else{
+        } else {
             lbID.setText("");
             txDescricaoPeca.setText("");
             txValor.setText("");
             txQtd.setText("");
         }
     }
-    
+
 }
