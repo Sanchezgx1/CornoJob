@@ -118,9 +118,10 @@ public class EstoqueController implements Initializable {
         });
 
         btAtualiza.setOnMouseClicked((MouseEvent e) -> {
+            atualiza();
             tabela.setItems(atualizaTabela());
         });
-        
+
         btReset.setOnMouseClicked((MouseEvent e) -> {
             tabela.setItems(atualizaTabela());
         });
@@ -174,6 +175,17 @@ public class EstoqueController implements Initializable {
             txValor.setText("");
             txQtd.setText("");
         }
+    }
+
+    public void atualiza() {
+
+        Long id = Long.parseLong(lbID.getText()), quantidade = Long.parseLong(txQtd.getText());
+        String descricao = txDescricaoPeca.getText();
+        Double valorUni = Double.parseDouble(txValor.getText());
+
+        ProdutoDAO dao = new ProdutoDAO();
+        Produto p = new Produto(id, descricao, valorUni, quantidade);
+        dao.update(p);
     }
 
 }

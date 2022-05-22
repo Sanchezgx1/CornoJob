@@ -37,7 +37,7 @@ public class ProdutoDAO {
             stmt.setDouble(2, p.getValorUni());
             stmt.setLong(3, p.getQuantidade());
             stmt.setDouble(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
-            stmt.executeUpdate();
+            stmt.execute();
             stmt.close();
             con.close();
 
@@ -50,7 +50,7 @@ public class ProdutoDAO {
 
     }
 
-    public void update(Produto p) {
+    public boolean update(Produto p) {
         PreparedStatement stmt = null;
 
         try {
@@ -60,13 +60,15 @@ public class ProdutoDAO {
             stmt.setLong(3, p.getQuantidade());
             stmt.setDouble(4, p.valorTotal(p.getValorUni(), p.getQuantidade()));
             stmt.setLong(5, p.getId());
-            stmt.executeUpdate();
+            stmt.execute();
             stmt.close();
             con.close();
 
             JOptionPane.showMessageDialog(null, "Alterado com Sucesso");
+            return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Alterar" + ex);
+            return false;
         } finally {
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -79,7 +81,7 @@ public class ProdutoDAO {
         try {
             stmt = con.prepareStatement("DELETE FROM produto WHERE id = ?");
             stmt.setLong(1, p.getId());
-            stmt.executeUpdate();
+            stmt.execute();
             stmt.close();
             con.close();
 
