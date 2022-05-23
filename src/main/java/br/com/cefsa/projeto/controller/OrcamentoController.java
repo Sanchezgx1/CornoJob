@@ -4,6 +4,7 @@
  */
 package br.com.cefsa.projeto.controller;
 
+import br.com.cefsa.projeto.CadastroOrcamento;
 import br.com.cefsa.projeto.Orcamento;
 import br.com.cefsa.projeto.TelaOpcao;
 import java.net.URL;
@@ -42,7 +43,18 @@ public class OrcamentoController implements Initializable {
         });
 
         btCadastro.setOnMouseClicked((MouseEvent e) -> {
-            System.out.println("Cadastro Feito");
+            CadastroOrcamento co = new CadastroOrcamento();
+            try {
+                co.start(new Stage());
+                Orcamento.getStage().close();
+            } catch (Exception ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Não foi possivel abrir a Cadastro Orçamento");
+                alert.show();
+            }
+            
         });
     }
 

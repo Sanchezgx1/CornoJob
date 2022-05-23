@@ -5,6 +5,7 @@
 package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.Estoque;
+import br.com.cefsa.projeto.FuncionarioTela;
 import br.com.cefsa.projeto.Orcamento;
 import br.com.cefsa.projeto.TelaOpcao;
 import java.net.URL;
@@ -68,7 +69,17 @@ public class TelaOpcaoController implements Initializable {
         });
 
         btFuncionario.setOnMouseClicked((MouseEvent e) -> {
-            System.out.println("Funcionario");
+            FuncionarioTela fu = new FuncionarioTela();
+            try {
+                fu.start(new Stage());
+                TelaOpcao.getStage().close();
+            } catch (Exception ex) {
+                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText("Não foi possivel abrir a tela");
+                alert.show();
+            }
         });
 
         btFinanceiro.setOnMouseClicked((MouseEvent e) -> {

@@ -32,6 +32,10 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+    public Produto(String nome, Long valorH) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.CadastroOrcamentoController">
-    
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.CadastroOrcamentoController">
+   <children>
+      <TableView fx:id="tbPeca" layoutX="441.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0">
+        <columns>
+          <TableColumn fx:id="clmpeca" prefWidth="240.0" text="Peça" />
+          <TableColumn fx:id="clmValorUni" prefWidth="70.0" text="Valor" />
+            <TableColumn fx:id="clmquantidade" prefWidth="70.0" text="Quantidade" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tbpecaOrc" layoutX="896.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0">
+         <columns>
+            <TableColumn fx:id="clmpecaOrc" prefWidth="240.0" text="Peça" />
+            <TableColumn fx:id="clmvalorUniOrc" prefWidth="70.0" text="Valor" />
+            <TableColumn fx:id="clmquantidadeOrc" prefWidth="70.0" text="Quantidade" />
+         </columns>
+      </TableView>
+      <Button fx:id="btacrescenta" layoutX="849.0" layoutY="202.0" mnemonicParsing="false" text="--&gt;" />
+      <Button fx:id="btsubtrai" layoutX="849.0" layoutY="385.0" mnemonicParsing="false" text="&lt;--" />
+      <ComboBox layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Funcionarios" />
+      <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Nome Proprietario" />
+      <TextField fx:id="txmodelo" layoutX="232.0" layoutY="224.0" prefHeight="25.0" prefWidth="160.0" promptText="Modelo" />
+      <TextField fx:id="txmarca" layoutX="42.0" layoutY="224.0" prefWidth="160.0" promptText="Marca" AnchorPane.topAnchor="224.0" />
+      <TextField fx:id="txhoraFun" layoutX="304.0" layoutY="292.0" prefHeight="25.0" prefWidth="88.0" promptText="Tempo/hora" />
+      <Button fx:id="btVoltar" layoutX="59.0" layoutY="410.0" mnemonicParsing="false" text="Voltar" />
+      <Button fx:id="btCadastrar" layoutX="229.0" layoutY="410.0" mnemonicParsing="false" text="Cadastrar" />
+      <TextField fx:id="txnomeFun" layoutX="14.0" layoutY="542.0" prefWidth="160.0" promptText="Nome Funcionario" />
+      <TextField fx:id="txhoraFun" layoutX="177.0" layoutY="542.0" prefWidth="80.0" promptText="Valor/Hora" />
+      <Button fx:id="btsalvaFun" layoutX="275.0" layoutY="542.0" mnemonicParsing="false" text="salvar" />
+      <Label layoutX="948.0" layoutY="595.0" prefHeight="36.0" prefWidth="80.0" text="Total:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1028.0" layoutY="592.0" text="1000.00">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txnomePeca" layoutX="896.0" layoutY="555.0" prefWidth="240.0" />
+      <TextField fx:id="txvalorPeca" layoutX="1136.0" layoutY="555.0" prefWidth="70.0" />
+      <TextField fx:id="txqtdPeca" layoutX="1206.0" layoutY="555.0" prefWidth="70.0" />
+      <Button fx:id="btCadastrarPeca" layoutX="1208.0" layoutY="584.0" mnemonicParsing="false" text="Cadastrar" />
+   </children>
 </AnchorPane>
