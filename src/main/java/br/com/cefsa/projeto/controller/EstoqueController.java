@@ -105,7 +105,7 @@ public class EstoqueController implements Initializable {
             p.setValorUni(Double.parseDouble(txValor.getText()));
             p.setQuantidade(Long.parseLong(txQtd.getText()));
             dao.create(p);
-
+                
             txDescricaoPeca.setText(null);
             txValor.setText(null);
             txQtd.setText(null);

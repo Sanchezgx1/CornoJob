@@ -6,7 +6,9 @@ package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.CadastroOrcamento;
 import br.com.cefsa.projeto.Orcamento;
+import br.com.cefsa.projeto.dao.FuncionarioDAO;
 import br.com.cefsa.projeto.dao.ProdutoDAO;
+import br.com.cefsa.projeto.model.Funcionario;
 import br.com.cefsa.projeto.model.Produto;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,10 +24,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -43,13 +49,7 @@ public class CadastroOrcamentoController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btacrescenta;
-
-    @FXML
     private Button btsalvaFun;
-
-    @FXML
-    private Button btsubtrai;
 
     @FXML
     private TableColumn<Produto, String> clmpeca;
@@ -73,13 +73,13 @@ public class CadastroOrcamentoController implements Initializable {
     private TableView<Produto> tbPeca;
 
     @FXML
-    private TableView<?> tbpecaOrc;
+    private TableView<Produto> tbpecaOrc;
 
     @FXML
     private TextField txcliente;
 
     @FXML
-    private TextField txhoraFun;
+    private TextField txHoraFun;
 
     @FXML
     private TextField txmarca;
@@ -89,10 +89,10 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private TextField txnomeFun;
-    
+
     @FXML
     private Button btCadastrarPeca;
-    
+
     @FXML
     private TextField txnomePeca;
 
@@ -102,11 +102,31 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private TextField txvalorPeca;
 
+    @FXML
+    private Label lbvalorT;
+
+    @FXML
+    private Label lbID;
+
+    @FXML
+    private ComboBox<Funcionario> cbfuncionario;
+
     private Produto seleciona;
+
+    private Funcionario seleciona2;
+
+    private static List<Produto> produtos = new ArrayList<>();
+
+    private static List<Funcionario> func = new ArrayList<>();
+
+    private double precoTotal = 0;
+
+    private Funcionario funcionarioEscolhido = new Funcionario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initTable();
+        carregaFuncionario();
 
         btVoltar.setOnMouseClicked((MouseEvent e) -> {
             Orcamento or = new Orcamento();
@@ -121,11 +141,11 @@ public class CadastroOrcamentoController implements Initializable {
                 alert.show();
             }
         });
-        
-        btacrescenta.setOnMouseClicked((MouseEvent e) -> {
-            
+
+        btCadastrarPeca.setOnMouseClicked((MouseEvent e) -> {
+            initTable2();
         });
-        
+
         tbPeca.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue ov, Object oldValue, Object newValue) {
@@ -133,8 +153,24 @@ public class CadastroOrcamentoController implements Initializable {
                 mostraPeca();
             }
         });
+
+        cbfuncionario.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Funcionario>() {
+            @Override
+            public void changed(ObservableValue<? extends Funcionario> ov, Funcionario oldValue, Funcionario newValue) {
+                seleciona2 = (Funcionario) newValue;
+                atribuiFuncionario(seleciona2.getId());
+            }
+        });
+
+        txHoraFun.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                calculaPrecos();
+            }
+
+        });
         
     }
+    
 
     public void initTable() {
         clmpeca.setCellValueFactory(new PropertyValueFactory("descricao"));
@@ -150,38 +186,92 @@ public class CadastroOrcamentoController implements Initializable {
 
     public void mostraPeca() {
         if (seleciona != null) {
+            lbID.setText(seleciona.getId().toString());
             txnomePeca.setText(seleciona.getDescricao());
             txvalorPeca.setText(seleciona.getValorUni().toString());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro");
-                alert.setHeaderText("Não foi possivel voltar Inserir a Peça");
-                alert.show();
+            alert.setTitle("Erro");
+            alert.setHeaderText("Não foi possivel voltar Inserir a Peça");
+            alert.show();
         }
     }
-    
-    public List<Produto> getList(){
-        List<Produto> produtos = new ArrayList<>();
-        
+
+    public List<Produto> getList() {
+
         Produto p = new Produto();
-        
+        p.setId(Long.parseLong(lbID.getText()));
         p.setDescricao(txnomePeca.getText());
         p.setValorUni(Double.parseDouble(txvalorPeca.getText()));
         p.setQuantidade(Long.parseLong(txqtdPeca.getText()));
-        produtos.add(p);
-        
+
+        if (produtos.size() > 0) {
+            for (Produto product : produtos) {
+                if (product.getId().equals(p.getId())) {
+                    produtos.remove(product);
+                    break;
+                }
+            }
+        }
+
+        if (Double.parseDouble(txqtdPeca.getText()) > seleciona.getQuantidade()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Quantidade máxima é: " + seleciona.getQuantidade());
+            alert.show();
+            p.setQuantidade(seleciona.getQuantidade());
+        }
+        if (p.getQuantidade() > 0) {
+            produtos.add(p);
+
+        }
+        calculaPrecos();
         return produtos;
     }
-    
-    public void initTable2(){
+
+    public void initTable2() {
         clmpecaOrc.setCellValueFactory(new PropertyValueFactory("descricao"));
         clmvalorUniOrc.setCellValueFactory(new PropertyValueFactory("valorUni"));
         clmquantidadeOrc.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        //tbpecaOrc.setItems(atualizaTabela2());
+        tbpecaOrc.setItems(atualizaTabela2());
     }
-    
+
     public ObservableList<Produto> atualizaTabela2() {
         return FXCollections.observableArrayList(getList());
+    }
+
+    public void atribuiFuncionario(Long idSelecionado) {
+        for (Funcionario funcionario : func) {
+            if (funcionario.getId() == idSelecionado) {
+                funcionarioEscolhido = funcionario;
+                break;
+            }
+        }
+    }
+
+    public void calculaPrecos() {
+        precoTotal = 0;
+        if (funcionarioEscolhido != null && txHoraFun.getText() != null ) {
+            precoTotal += funcionarioEscolhido.getValorH() * Long.parseLong(txHoraFun.getText());
+        }
+        if (produtos.size() > 0) {
+            for (Produto p : produtos) {
+                precoTotal += p.getQuantidade() * p.getValorUni();
+            }
+        }
+        lbvalorT.setText(Double.toString(precoTotal));
+    }
+
+    public void carregaFuncionario() {
+
+        cbfuncionario.setItems(pegaFuncionario());
+
+    }
+
+    public static ObservableList<Funcionario> pegaFuncionario() {
+        FuncionarioDAO fdao = new FuncionarioDAO();
+        func = fdao.getList();
+        return FXCollections.observableArrayList(fdao.getList());
     }
 
 }

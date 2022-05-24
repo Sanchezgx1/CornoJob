@@ -53,5 +53,10 @@ public class Funcionario {
     public void setValorH(Long valorH) {
         this.valorH = valorH;
     }
+
+    @Override
+    public String toString() {
+        return getNome();
+    }
     
 }

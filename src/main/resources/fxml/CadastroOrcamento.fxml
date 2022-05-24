@@ -25,13 +25,11 @@
             <TableColumn fx:id="clmquantidadeOrc" prefWidth="70.0" text="Quantidade" />
          </columns>
       </TableView>
-      <Button fx:id="btacrescenta" layoutX="849.0" layoutY="202.0" mnemonicParsing="false" text="--&gt;" />
-      <Button fx:id="btsubtrai" layoutX="849.0" layoutY="385.0" mnemonicParsing="false" text="&lt;--" />
-      <ComboBox layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Funcionarios" />
+      <ComboBox fx:id="cbfuncionario" layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Selecione Funcionario" />
       <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Nome Proprietario" />
       <TextField fx:id="txmodelo" layoutX="232.0" layoutY="224.0" prefHeight="25.0" prefWidth="160.0" promptText="Modelo" />
       <TextField fx:id="txmarca" layoutX="42.0" layoutY="224.0" prefWidth="160.0" promptText="Marca" AnchorPane.topAnchor="224.0" />
-      <TextField fx:id="txhoraFun" layoutX="304.0" layoutY="292.0" prefHeight="25.0" prefWidth="88.0" promptText="Tempo/hora" />
+      <TextField fx:id="txHoraFun" layoutX="304.0" layoutY="292.0" prefHeight="25.0" prefWidth="88.0" promptText="Tempo/hora" />
       <Button fx:id="btVoltar" layoutX="59.0" layoutY="410.0" mnemonicParsing="false" text="Voltar" />
       <Button fx:id="btCadastrar" layoutX="229.0" layoutY="410.0" mnemonicParsing="false" text="Cadastrar" />
       <TextField fx:id="txnomeFun" layoutX="14.0" layoutY="542.0" prefWidth="160.0" promptText="Nome Funcionario" />
@@ -42,7 +40,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="1028.0" layoutY="592.0" text="1000.00">
+      <Label fx:id="lbvalorT" layoutX="1028.0" layoutY="592.0" text="0.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -51,5 +49,10 @@
       <TextField fx:id="txvalorPeca" layoutX="1136.0" layoutY="555.0" prefWidth="70.0" />
       <TextField fx:id="txqtdPeca" layoutX="1206.0" layoutY="555.0" prefWidth="70.0" />
       <Button fx:id="btCadastrarPeca" layoutX="1208.0" layoutY="584.0" mnemonicParsing="false" text="Cadastrar" />
+      <Label fx:id="lbID" layoutX="870.0" layoutY="554.0" prefHeight="25.0" prefWidth="27.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
