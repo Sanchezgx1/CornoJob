@@ -168,9 +168,8 @@ public class CadastroOrcamentoController implements Initializable {
             }
 
         });
-        
+
     }
-    
 
     public void initTable() {
         clmpeca.setCellValueFactory(new PropertyValueFactory("descricao"));
@@ -251,9 +250,14 @@ public class CadastroOrcamentoController implements Initializable {
 
     public void calculaPrecos() {
         precoTotal = 0;
-        if (funcionarioEscolhido != null && txHoraFun.getText() != null ) {
-            precoTotal += funcionarioEscolhido.getValorH() * Long.parseLong(txHoraFun.getText());
+        try {
+            if (funcionarioEscolhido != null && txHoraFun.getText() != null) {
+                precoTotal += funcionarioEscolhido.getValorH() * Double.parseDouble(txHoraFun.getText());
+            }
+        }catch (Exception ex){
+            
         }
+        
         if (produtos.size() > 0) {
             for (Produto p : produtos) {
                 precoTotal += p.getQuantidade() * p.getValorUni();

@@ -6,52 +6,79 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.CadastroOrcamentoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1306.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.cefsa.projeto.controller.CadastroOrcamentoController">
    <children>
-      <TableView fx:id="tbPeca" layoutX="441.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0">
+      <ImageView fitHeight="700.0" fitWidth="1316.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Orçamento.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tbPeca" layoutX="441.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0" stylesheets="@../styles/TableViewEstilo.css">
         <columns>
           <TableColumn fx:id="clmpeca" prefWidth="240.0" text="Peça" />
           <TableColumn fx:id="clmValorUni" prefWidth="70.0" text="Valor" />
             <TableColumn fx:id="clmquantidade" prefWidth="70.0" text="Quantidade" />
         </columns>
       </TableView>
-      <TableView fx:id="tbpecaOrc" layoutX="896.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0">
+      <TableView fx:id="tbpecaOrc" layoutX="896.0" layoutY="138.0" prefHeight="404.0" prefWidth="380.0" stylesheets="@../styles/TableViewEstilo.css">
          <columns>
             <TableColumn fx:id="clmpecaOrc" prefWidth="240.0" text="Peça" />
             <TableColumn fx:id="clmvalorUniOrc" prefWidth="70.0" text="Valor" />
             <TableColumn fx:id="clmquantidadeOrc" prefWidth="70.0" text="Quantidade" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cbfuncionario" layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Selecione Funcionario" />
-      <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Nome Proprietario" />
-      <TextField fx:id="txmodelo" layoutX="232.0" layoutY="224.0" prefHeight="25.0" prefWidth="160.0" promptText="Modelo" />
-      <TextField fx:id="txmarca" layoutX="42.0" layoutY="224.0" prefWidth="160.0" promptText="Marca" AnchorPane.topAnchor="224.0" />
-      <TextField fx:id="txHoraFun" layoutX="304.0" layoutY="292.0" prefHeight="25.0" prefWidth="88.0" promptText="Tempo/hora" />
-      <Button fx:id="btVoltar" layoutX="59.0" layoutY="410.0" mnemonicParsing="false" text="Voltar" />
-      <Button fx:id="btCadastrar" layoutX="229.0" layoutY="410.0" mnemonicParsing="false" text="Cadastrar" />
-      <TextField fx:id="txnomeFun" layoutX="14.0" layoutY="542.0" prefWidth="160.0" promptText="Nome Funcionario" />
-      <TextField fx:id="txhoraFun" layoutX="177.0" layoutY="542.0" prefWidth="80.0" promptText="Valor/Hora" />
-      <Button fx:id="btsalvaFun" layoutX="275.0" layoutY="542.0" mnemonicParsing="false" text="salvar" />
-      <Label layoutX="948.0" layoutY="595.0" prefHeight="36.0" prefWidth="80.0" text="Total:">
+      <ComboBox fx:id="cbfuncionario" layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Selecione Funcionario" stylesheets="@../styles/ComboBox.css" />
+      <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Nome Cliente" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txmodelo" layoutX="232.0" layoutY="224.0" prefHeight="25.0" prefWidth="160.0" promptText="Modelo" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txmarca" layoutX="42.0" layoutY="224.0" prefWidth="160.0" promptText="Marca" stylesheets="@../styles/TextFieldAltera.css" AnchorPane.topAnchor="224.0" />
+      <TextField fx:id="txHoraFun" layoutX="304.0" layoutY="292.0" prefHeight="31.0" prefWidth="101.0" promptText="Tempo/hora" styleClass="text-field" stylesheets="@../styles/TextFieldAltera.css">
          <font>
-            <Font size="24.0" />
+            <Font name="Garamond" size="14.0" />
+         </font></TextField>
+      <Button fx:id="btVoltar" layoutX="77.0" layoutY="410.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Button>
+      <Button fx:id="btCadastrar" layoutX="215.0" layoutY="410.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Garamond" size="24.0" />
+         </font></Button>
+      <TextField fx:id="txnomeFun" layoutX="28.0" layoutY="642.0" prefWidth="160.0" promptText="Nome Funcionario" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txhoraFun" layoutX="191.0" layoutY="642.0" prefWidth="80.0" promptText="Valor/Hora" stylesheets="@../styles/TextFieldAltera.css" />
+      <Button fx:id="btsalvaFun" layoutX="277.0" layoutY="644.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Salvar" textFill="WHITE">
+         <font>
+            <Font name="Garamond" size="14.0" />
+         </font></Button>
+      <Label layoutX="884.0" layoutY="589.0" prefHeight="53.0" prefWidth="91.0" text="Total:">
+         <font>
+            <Font name="Garamond" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="lbvalorT" layoutX="1028.0" layoutY="592.0" text="0.0">
+      <Label fx:id="lbvalorT" layoutX="976.0" layoutY="594.0" text="0.0">
          <font>
-            <Font size="24.0" />
+            <Font name="Garamond" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="txnomePeca" layoutX="896.0" layoutY="555.0" prefWidth="240.0" />
-      <TextField fx:id="txvalorPeca" layoutX="1136.0" layoutY="555.0" prefWidth="70.0" />
-      <TextField fx:id="txqtdPeca" layoutX="1206.0" layoutY="555.0" prefWidth="70.0" />
-      <Button fx:id="btCadastrarPeca" layoutX="1208.0" layoutY="584.0" mnemonicParsing="false" text="Cadastrar" />
+      <TextField fx:id="txnomePeca" layoutX="896.0" layoutY="555.0" prefWidth="240.0" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txvalorPeca" layoutX="1136.0" layoutY="555.0" prefWidth="70.0" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txqtdPeca" layoutX="1206.0" layoutY="555.0" prefWidth="70.0" stylesheets="@../styles/TextFieldAltera.css" />
+      <Button fx:id="btCadastrarPeca" layoutX="1175.0" layoutY="592.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Garamond" size="18.0" />
+         </font></Button>
       <Label fx:id="lbID" layoutX="870.0" layoutY="554.0" prefHeight="25.0" prefWidth="27.0">
          <font>
             <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="14.0" prefHeight="82.0" prefWidth="560.0" text="Cadastro Orçamento" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Garamond" size="64.0" />
          </font>
       </Label>
    </children>

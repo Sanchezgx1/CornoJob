@@ -1,0 +1,11 @@
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 20 ;
+   -fx-border-color: black;
+   -fx-border-radius: 20;
+    -fx-font-family: "Garamond";
+   -fx-font-size: 14;
+   -fx-border-width: 2;
+   -fx-text-fill: black;
+}
