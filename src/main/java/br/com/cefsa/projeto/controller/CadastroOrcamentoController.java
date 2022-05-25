@@ -5,10 +5,13 @@
 package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.CadastroOrcamento;
-import br.com.cefsa.projeto.Orcamento;
+import br.com.cefsa.projeto.OrcamentoTela;
+import br.com.cefsa.projeto.connection.ConnectionFactory;
 import br.com.cefsa.projeto.dao.FuncionarioDAO;
+import br.com.cefsa.projeto.dao.OrcamentoDAO;
 import br.com.cefsa.projeto.dao.ProdutoDAO;
 import br.com.cefsa.projeto.model.Funcionario;
+import br.com.cefsa.projeto.model.Orcamento;
 import br.com.cefsa.projeto.model.Produto;
 import java.net.URL;
 import java.util.ArrayList;
@@ -111,6 +114,9 @@ public class CadastroOrcamentoController implements Initializable {
     @FXML
     private ComboBox<Funcionario> cbfuncionario;
 
+    @FXML
+    private TextField txnumeroCliente;
+
     private Produto seleciona;
 
     private Funcionario seleciona2;
@@ -118,6 +124,8 @@ public class CadastroOrcamentoController implements Initializable {
     private static List<Produto> produtos = new ArrayList<>();
 
     private static List<Funcionario> func = new ArrayList<>();
+
+    private static List<Orcamento> orc = new ArrayList<>();
 
     private double precoTotal = 0;
 
@@ -129,7 +137,7 @@ public class CadastroOrcamentoController implements Initializable {
         carregaFuncionario();
 
         btVoltar.setOnMouseClicked((MouseEvent e) -> {
-            Orcamento or = new Orcamento();
+            OrcamentoTela or = new OrcamentoTela();
             try {
                 or.start(new Stage());
                 CadastroOrcamento.getStage().close();
@@ -144,6 +152,35 @@ public class CadastroOrcamentoController implements Initializable {
 
         btCadastrarPeca.setOnMouseClicked((MouseEvent e) -> {
             initTable2();
+        });
+
+        btCadastrar.setOnMouseClicked((MouseEvent e) -> {
+
+            Orcamento o = new Orcamento();
+            OrcamentoDAO dao = new OrcamentoDAO();
+
+            o.setMarcaMoto(txmarca.getText());
+            o.setModeloMoto(txmodelo.getText());
+            o.setNomeCliente(txcliente.getText());
+            o.setNumeroCliente(txnumeroCliente.getText());
+            o.setTotal(Double.parseDouble(lbvalorT.getText()));
+            o.setProdutos(produtos);
+            dao.create(o);
+
+            pegaId();
+            Integer numeroDeItens = 0;
+            if (o.getProdutos().size() > 0) {
+                for (Produto p : o.getProdutos()) {
+                    numeroDeItens++;
+                    if (numeroDeItens == o.getProdutos().size()) {
+                        dao.createPedido(p, orc.get(0).getId(), true);
+                    } else {
+                        dao.createPedido(p, orc.get(0).getId(), false);
+
+                    }
+                }
+            }
+
         });
 
         tbPeca.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -254,10 +291,10 @@ public class CadastroOrcamentoController implements Initializable {
             if (funcionarioEscolhido != null && txHoraFun.getText() != null) {
                 precoTotal += funcionarioEscolhido.getValorH() * Double.parseDouble(txHoraFun.getText());
             }
-        }catch (Exception ex){
-            
+        } catch (Exception ex) {
+
         }
-        
+
         if (produtos.size() > 0) {
             for (Produto p : produtos) {
                 precoTotal += p.getQuantidade() * p.getValorUni();
@@ -276,6 +313,12 @@ public class CadastroOrcamentoController implements Initializable {
         FuncionarioDAO fdao = new FuncionarioDAO();
         func = fdao.getList();
         return FXCollections.observableArrayList(fdao.getList());
+    }
+
+    public static ObservableList<Orcamento> pegaId() {
+        OrcamentoDAO odao = new OrcamentoDAO();
+        orc = odao.orcamentoId();
+        return FXCollections.observableArrayList(odao.orcamentoId());
     }
 
 }

@@ -5,16 +5,26 @@
 package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.CadastroOrcamento;
-import br.com.cefsa.projeto.Orcamento;
+import br.com.cefsa.projeto.OrcamentoTela;
 import br.com.cefsa.projeto.TelaOpcao;
+import br.com.cefsa.projeto.dao.OrcamentoDAO;
+import br.com.cefsa.projeto.dao.ProdutoDAO;
+import br.com.cefsa.projeto.model.Orcamento;
+import br.com.cefsa.projeto.model.Produto;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -26,13 +36,39 @@ public class OrcamentoController implements Initializable {
     @FXML
     private Button btCadastro;
 
+    @FXML
+    private TableView<Orcamento> tbOrcamento;
+
+    @FXML
+    private TableColumn<Orcamento, String> clmCliente;
+
+    @FXML
+    private TableColumn<Orcamento, Long> clmCodigo;
+
+    @FXML
+    private TableColumn<Orcamento, Date> clmData;
+
+    @FXML
+    private TableColumn<Orcamento, String> clmMarca;
+
+    @FXML
+    private TableColumn<Orcamento, String> clmModelo;
+
+    @FXML
+    private TableColumn<Orcamento, Double> clmValorOrc;
+
+    @FXML
+    private TableColumn<Orcamento, String> clmTelefone;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initTable();
+
         btVoltar.setOnMouseClicked((MouseEvent e) -> {
             TelaOpcao to = new TelaOpcao();
             try {
                 to.start(new Stage());
-                Orcamento.getStage().close();
+                OrcamentoTela.getStage().close();
             } catch (Exception ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -46,7 +82,7 @@ public class OrcamentoController implements Initializable {
             CadastroOrcamento co = new CadastroOrcamento();
             try {
                 co.start(new Stage());
-                Orcamento.getStage().close();
+                OrcamentoTela.getStage().close();
             } catch (Exception ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -54,8 +90,24 @@ public class OrcamentoController implements Initializable {
                 alert.setHeaderText("Não foi possivel abrir a Cadastro Orçamento");
                 alert.show();
             }
-            
+
         });
+    }
+
+    public void initTable() {
+        clmCodigo.setCellValueFactory(new PropertyValueFactory("id"));
+        clmMarca.setCellValueFactory(new PropertyValueFactory("marcaMoto"));
+        clmModelo.setCellValueFactory(new PropertyValueFactory("modeloMoto"));
+        clmCliente.setCellValueFactory(new PropertyValueFactory("nomeCliente"));
+        clmTelefone.setCellValueFactory(new PropertyValueFactory("numeroCliente"));
+        clmValorOrc.setCellValueFactory(new PropertyValueFactory("total"));
+        clmData.setCellValueFactory(new PropertyValueFactory("data"));
+        tbOrcamento.setItems(atualizaTabela());
+    }
+
+    public ObservableList<Orcamento> atualizaTabela() {
+        OrcamentoDAO dao = new OrcamentoDAO();
+        return FXCollections.observableArrayList(dao.getList());
     }
 
 }

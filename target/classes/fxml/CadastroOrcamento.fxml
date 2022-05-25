@@ -33,7 +33,7 @@
          </columns>
       </TableView>
       <ComboBox fx:id="cbfuncionario" layoutX="42.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" promptText="Selecione Funcionario" stylesheets="@../styles/ComboBox.css" />
-      <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Nome Cliente" stylesheets="@../styles/TextFieldAltera.css" />
+      <TextField fx:id="txcliente" layoutX="42.0" layoutY="160.0" prefHeight="31.0" prefWidth="160.0" promptText="Nome Cliente" stylesheets="@../styles/TextFieldAltera.css" />
       <TextField fx:id="txmodelo" layoutX="232.0" layoutY="224.0" prefHeight="25.0" prefWidth="160.0" promptText="Modelo" stylesheets="@../styles/TextFieldAltera.css" />
       <TextField fx:id="txmarca" layoutX="42.0" layoutY="224.0" prefWidth="160.0" promptText="Marca" stylesheets="@../styles/TextFieldAltera.css" AnchorPane.topAnchor="224.0" />
       <TextField fx:id="txHoraFun" layoutX="304.0" layoutY="292.0" prefHeight="31.0" prefWidth="101.0" promptText="Tempo/hora" styleClass="text-field" stylesheets="@../styles/TextFieldAltera.css">
@@ -81,5 +81,6 @@
             <Font name="Garamond" size="64.0" />
          </font>
       </Label>
+      <TextField fx:id="txnumeroCliente" layoutX="230.0" layoutY="160.0" prefHeight="31.0" prefWidth="160.0" promptText="Numero Cliente" stylesheets="@../styles/TextFieldAltera.css" />
    </children>
 </AnchorPane>

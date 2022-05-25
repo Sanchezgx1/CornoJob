@@ -6,7 +6,7 @@ package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.Estoque;
 import br.com.cefsa.projeto.FuncionarioTela;
-import br.com.cefsa.projeto.Orcamento;
+import br.com.cefsa.projeto.OrcamentoTela;
 import br.com.cefsa.projeto.TelaOpcao;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,7 +41,7 @@ public class TelaOpcaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btOrcamento.setOnMouseClicked((MouseEvent e) -> {
-            Orcamento or = new Orcamento();
+            OrcamentoTela or = new OrcamentoTela();
             try {
                 or.start(new Stage());
                 TelaOpcao.getStage().close();
@@ -49,7 +49,7 @@ public class TelaOpcaoController implements Initializable {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
-                alert.setHeaderText("Não foi possivel voltar a Cadastro Estoque");
+                alert.setHeaderText("Não foi possivel abrir a tela Orçamento");
                 alert.show();
             }
         });
