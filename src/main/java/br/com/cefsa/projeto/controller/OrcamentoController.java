@@ -16,6 +16,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,6 +37,9 @@ public class OrcamentoController implements Initializable {
 
     @FXML
     private Button btCadastro;
+    
+    @FXML
+    private Button btdeletaOrc;
 
     @FXML
     private TableView<Orcamento> tbOrcamento;
@@ -59,6 +64,8 @@ public class OrcamentoController implements Initializable {
 
     @FXML
     private TableColumn<Orcamento, String> clmTelefone;
+    
+    private Orcamento seleciona;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,6 +99,17 @@ public class OrcamentoController implements Initializable {
             }
 
         });
+        
+        btdeletaOrc.setOnMouseClicked((MouseEvent e) -> {
+            deleta();
+        });
+        
+        tbOrcamento.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue ov, Object oldValue, Object newValue) {
+                seleciona = (Orcamento) newValue;
+            }
+        });
     }
 
     public void initTable() {
@@ -108,6 +126,22 @@ public class OrcamentoController implements Initializable {
     public ObservableList<Orcamento> atualizaTabela() {
         OrcamentoDAO dao = new OrcamentoDAO();
         return FXCollections.observableArrayList(dao.getList());
+    }
+    
+    public void deleta() {
+        if (seleciona != null) {
+            OrcamentoDAO dao = new OrcamentoDAO();
+            dao.delete(seleciona);
+            
+            Orcamento oc = new Orcamento();
+            oc.setId(seleciona.getId());
+            dao.deletePeca(oc);
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setHeaderText("Selecione um Usuario");
+            a.show();
+        }
+        tbOrcamento.setItems(atualizaTabela());
     }
 
 }

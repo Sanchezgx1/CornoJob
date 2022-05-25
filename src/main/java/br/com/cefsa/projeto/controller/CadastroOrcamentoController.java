@@ -6,7 +6,6 @@ package br.com.cefsa.projeto.controller;
 
 import br.com.cefsa.projeto.CadastroOrcamento;
 import br.com.cefsa.projeto.OrcamentoTela;
-import br.com.cefsa.projeto.connection.ConnectionFactory;
 import br.com.cefsa.projeto.dao.FuncionarioDAO;
 import br.com.cefsa.projeto.dao.OrcamentoDAO;
 import br.com.cefsa.projeto.dao.ProdutoDAO;
@@ -52,9 +51,6 @@ public class CadastroOrcamentoController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btsalvaFun;
-
-    @FXML
     private TableColumn<Produto, String> clmpeca;
 
     @FXML
@@ -64,13 +60,13 @@ public class CadastroOrcamentoController implements Initializable {
     private TableColumn<Produto, Long> clmquantidade;
 
     @FXML
-    private TableColumn<?, String> clmpecaOrc;
+    private TableColumn<Produto, String> clmpecaOrc;
 
     @FXML
-    private TableColumn<?, Double> clmvalorUniOrc;
+    private TableColumn<Produto, Double> clmvalorUniOrc;
 
     @FXML
-    private TableColumn<?, Long> clmquantidadeOrc;
+    private TableColumn<Produto, Long> clmquantidadeOrc;
 
     @FXML
     private TableView<Produto> tbPeca;
@@ -89,9 +85,6 @@ public class CadastroOrcamentoController implements Initializable {
 
     @FXML
     private TextField txmodelo;
-
-    @FXML
-    private TextField txnomeFun;
 
     @FXML
     private Button btCadastrarPeca;
@@ -180,6 +173,15 @@ public class CadastroOrcamentoController implements Initializable {
                     }
                 }
             }
+            
+            o.setMarcaMoto("");
+            o.setModeloMoto("");
+            o.setNomeCliente("");
+            o.setNumeroCliente("");
+            o.setTotal(0.0);
+            produtos.clear();
+            
+            fechar();
 
         });
 
@@ -319,6 +321,20 @@ public class CadastroOrcamentoController implements Initializable {
         OrcamentoDAO odao = new OrcamentoDAO();
         orc = odao.orcamentoId();
         return FXCollections.observableArrayList(odao.orcamentoId());
+    }
+
+    public void fechar() {
+        OrcamentoTela or = new OrcamentoTela();
+        try {
+            or.start(new Stage());
+            CadastroOrcamento.getStage().close();
+        } catch (Exception ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Não foi possivel voltar a Orçamento");
+            alert.show();
+        }
     }
 
 }

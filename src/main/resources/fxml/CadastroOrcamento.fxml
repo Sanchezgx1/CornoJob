@@ -40,19 +40,13 @@
          <font>
             <Font name="Garamond" size="14.0" />
          </font></TextField>
-      <Button fx:id="btVoltar" layoutX="77.0" layoutY="410.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Voltar" textFill="WHITE">
+      <Button fx:id="btVoltar" layoutX="81.0" layoutY="467.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Garamond" size="24.0" />
          </font></Button>
-      <Button fx:id="btCadastrar" layoutX="215.0" layoutY="410.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Cadastrar" textFill="WHITE">
+      <Button fx:id="btCadastrar" layoutX="219.0" layoutY="467.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="Garamond" size="24.0" />
-         </font></Button>
-      <TextField fx:id="txnomeFun" layoutX="28.0" layoutY="642.0" prefWidth="160.0" promptText="Nome Funcionario" stylesheets="@../styles/TextFieldAltera.css" />
-      <TextField fx:id="txhoraFun" layoutX="191.0" layoutY="642.0" prefWidth="80.0" promptText="Valor/Hora" stylesheets="@../styles/TextFieldAltera.css" />
-      <Button fx:id="btsalvaFun" layoutX="277.0" layoutY="644.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" text="Salvar" textFill="WHITE">
-         <font>
-            <Font name="Garamond" size="14.0" />
          </font></Button>
       <Label layoutX="884.0" layoutY="589.0" prefHeight="53.0" prefWidth="91.0" text="Total:">
          <font>

@@ -38,7 +38,6 @@ public class OrcamentoDAO {
             stmt.setDouble(5, o.getTotal());
             stmt.execute();
 
-            JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Cadastrar" + ex);
         } finally {
@@ -61,7 +60,6 @@ public class OrcamentoDAO {
                 con.close();
             }
 
-            JOptionPane.showMessageDialog(null, "Salvo com Sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Cadastrar" + ex);
         } finally {
@@ -79,10 +77,24 @@ public class OrcamentoDAO {
             stmt = con.prepareStatement("DELETE FROM orcamento WHERE id = ?");
             stmt.setLong(1, o.getId());
             stmt.execute();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Deletar" + ex);
+        } finally {
+        }
+
+    }
+
+    public void deletePeca(Orcamento o) {
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM PEDIDOPECA WHERE IDPEDIDO = ?");
+            stmt.setLong(1, o.getId());
+            stmt.execute();
             stmt.close();
             con.close();
 
-            JOptionPane.showMessageDialog(null, "Deletado com Sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Deletar" + ex);
         } finally {

@@ -45,5 +45,14 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="btdeletaOrc" layoutX="721.0" layoutY="399.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/BotaoCadastroEstoqueJavaFX.css">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/botao-de-deletar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
