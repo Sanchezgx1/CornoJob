@@ -149,6 +149,8 @@ public class CadastroOrcamentoController implements Initializable {
 
         btCadastrar.setOnMouseClicked((MouseEvent e) -> {
 
+            initTable2();
+            
             Orcamento o = new Orcamento();
             OrcamentoDAO dao = new OrcamentoDAO();
 
@@ -166,9 +168,21 @@ public class CadastroOrcamentoController implements Initializable {
                 for (Produto p : o.getProdutos()) {
                     numeroDeItens++;
                     if (numeroDeItens == o.getProdutos().size()) {
-                        dao.createPedido(p, orc.get(0).getId(), true);
+                        dao.createPedido(p, orc.get(0).getId(), false);
                     } else {
                         dao.createPedido(p, orc.get(0).getId(), false);
+
+                    }
+                }
+            }
+            numeroDeItens = 0;
+            if (o.getProdutos().size() > 0) {
+                for (Produto p : o.getProdutos()) {
+                    numeroDeItens++;
+                    if (numeroDeItens == o.getProdutos().size()) {
+                        dao.updateEstoque(p,true);
+                    } else {
+                        dao.updateEstoque(p, false);
 
                     }
                 }
@@ -180,6 +194,7 @@ public class CadastroOrcamentoController implements Initializable {
             o.setNumeroCliente("");
             o.setTotal(0.0);
             produtos.clear();
+            precoTotal = 0;
             
             fechar();
 
@@ -219,6 +234,7 @@ public class CadastroOrcamentoController implements Initializable {
 
     public ObservableList<Produto> atualizaTabela() {
         ProdutoDAO dao = new ProdutoDAO();
+        
         return FXCollections.observableArrayList(dao.getList());
     }
 
@@ -301,6 +317,10 @@ public class CadastroOrcamentoController implements Initializable {
             for (Produto p : produtos) {
                 precoTotal += p.getQuantidade() * p.getValorUni();
             }
+        }
+        //aplica a taxa de lucro
+        if(precoTotal > 0) {
+           precoTotal = precoTotal * 1.3;
         }
         lbvalorT.setText(Double.toString(precoTotal));
     }

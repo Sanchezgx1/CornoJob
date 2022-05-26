@@ -142,7 +142,6 @@ public class EstoqueController implements Initializable {
         clmDescricao.setCellValueFactory(new PropertyValueFactory("descricao"));
         clmValorUni.setCellValueFactory(new PropertyValueFactory("valorUni"));
         clmQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        clmTotal.setCellValueFactory(new PropertyValueFactory("total"));
         tabela.setItems(atualizaTabela());
     }
 

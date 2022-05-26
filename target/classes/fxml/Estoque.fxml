@@ -19,10 +19,9 @@
       </ImageView>
       <TableView fx:id="tabela" layoutX="71.0" layoutY="100.0" prefHeight="319.0" prefWidth="872.0" stylesheets="@../styles/TableViewEstilo.css" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="82.0">
         <columns>
-          <TableColumn fx:id="clmDescricao" prefWidth="587.0" text="Descrição" />
-            <TableColumn fx:id="clmValorUni" minWidth="0.0" prefWidth="98.0" text="Valor Unitario" />
-          <TableColumn fx:id="clmQuantidade" prefWidth="103.0" text="Quantidade" />
-            <TableColumn fx:id="clmTotal" prefWidth="83.0" text="Total" />
+          <TableColumn fx:id="clmDescricao" prefWidth="691.1999435424805" text="Descrição" />
+            <TableColumn fx:id="clmValorUni" minWidth="0.0" prefWidth="88.800048828125" text="Valor Unitario" />
+          <TableColumn fx:id="clmQuantidade" prefWidth="92.7999267578125" text="Quantidade" />
         </columns>
       </TableView>
       <Button fx:id="btVoltar" layoutX="70.0" layoutY="529.0" mnemonicParsing="false" styleClass="icon-button" stylesheets="@../styles/AlteraFundoBotaoJavaFX.css" AnchorPane.bottomAnchor="30.0">

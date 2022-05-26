@@ -70,6 +70,44 @@ public class OrcamentoDAO {
 
     }
 
+    public void updateEstoque(Produto p, Boolean fechaconexao) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        Produto updateP = new Produto();
+        Produto pro = new Produto();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM PRODUTO WHERE id = ?");
+            stmt.setLong(1, p.getId());
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                pro.setId(rs.getLong("id"));
+                pro.setQuantidade(rs.getLong("quantidade"));
+            }
+            
+            updateP.setId(p.getId());
+            updateP.setQuantidade(pro.getQuantidade() - p.getQuantidade());
+
+            alteraEstoque(updateP);
+
+            if (fechaconexao == true) {
+                stmt.close();
+                con.close();
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar" + ex);
+        } finally {
+            if (fechaconexao) {
+                ConnectionFactory.closeConnection(con, stmt);
+            }
+        }
+
+    }
+
     public void delete(Orcamento o) {
         PreparedStatement stmt = null;
 
@@ -81,6 +119,7 @@ public class OrcamentoDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Deletar" + ex);
         } finally {
+            
         }
 
     }
@@ -148,7 +187,6 @@ public class OrcamentoDAO {
         try {
             stmt = con.prepareStatement("SELECT * FROM orcamento");
             rs = stmt.executeQuery();
-            System.out.println(rs);
 
             while (rs.next()) {
                 Orcamento orcamento = new Orcamento();
@@ -191,6 +229,29 @@ public class OrcamentoDAO {
         }
 
         return orc;
+    }
+
+    public boolean alteraEstoque(Produto p) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE PRODUTO SET quantidade = ? WHERE id = ?");
+            stmt.setLong(1, p.getQuantidade());
+            stmt.setLong(2, p.getId());
+            stmt.execute();
+            stmt.close();
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Alterar" + ex);
+            return false;
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+
     }
 
 }
